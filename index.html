@@ -1,0 +1,73 @@
+
+<link rel="stylesheet" href="stop.css" type="text/css">
+<html>
+    <div class="wrapper">
+
+        <h1>Stopwatch</h1>
+
+        <p><span id="seconds">00</span>:<span id="sec">00</span></p>
+        <button id="button-start">Start</button>
+        <button id="button-stop">Stop</button>
+        <button id="button-reset">Reset</button>
+        </div>
+</html>
+ 
+<script>
+    window.onload = function () {
+  
+  var seconds = 00; 
+  var sec = 00; 
+  var apdTens = document.getElementById("sec")
+  var appendSeconds = document.getElementById("seconds")
+  var buttonStart = document.getElementById('button-start');
+  var buttonStop = document.getElementById('button-stop');
+  var buttonReset = document.getElementById('button-reset');
+  var Interval ;
+//Start timer
+  buttonStart.onclick = function() {
+    
+    clearInterval(Interval);
+     Interval = setInterval(startTimer, 10);
+  }
+  
+//Stop timer  
+    buttonStop.onclick = function() {
+       clearInterval(Interval);
+  }
+  
+//Reset timer
+  buttonReset.onclick = function() {
+     clearInterval(Interval);
+     sec = "00";
+      seconds = "00";
+      apdTens.innerHTML = sec;
+      appendSeconds.innerHTML = seconds;
+  }
+  
+   
+  //Start timer logic
+  function startTimer () {
+    sec++; 
+    
+    if(sec <= 9){
+      apdTens.innerHTML = "0" + sec;
+    }
+    
+    if (sec > 9){
+      apdTens.innerHTML = sec;       
+    } 
+    
+    if (sec > 99) {
+      console.log("seconds");
+      seconds++;
+      appendSeconds.innerHTML = "0" + seconds;
+      sec = 0;
+      apdTens.innerHTML = "0" + 0;
+    }
+    
+    if (seconds > 9){
+      appendSeconds.innerHTML = seconds;
+    }
+  }
+}
+</script>
